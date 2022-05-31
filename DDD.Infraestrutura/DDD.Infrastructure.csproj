@@ -8,6 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DDD.Dominio\DDD.Domain.csproj" />
+    <ProjectReference Include="..\DDD.Services\DDD.Application.csproj" />
   </ItemGroup>
 
 </Project>
