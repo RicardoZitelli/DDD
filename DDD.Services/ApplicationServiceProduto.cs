@@ -3,11 +3,6 @@ using DDD.Application.Dtos;
 using DDD.Application.Interfaces;
 using DDD.Domain.Services.Interfaces;
 using DDD.Dominio.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DDD.Application
 {
@@ -34,7 +29,7 @@ namespace DDD.Application
             return this.mapper.Map<IEnumerable<ProdutoDto>>(produtos);
         }
 
-        public ProdutoDto GetById(int id)
+        public ProdutoDto FindById(int id)
         {
             var produto = this.serviceProduto.FindById(id);
             return this.mapper.Map<ProdutoDto>(produto);

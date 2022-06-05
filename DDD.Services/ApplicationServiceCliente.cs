@@ -8,44 +8,45 @@ namespace DDD.Application
 {
     public class ApplicationServiceCliente : IApplicationServiceCliente
     {
-        private readonly IServiceCliente serviceCliente;
-        private readonly IMapper mapper;
+        private readonly IServiceCliente _serviceCliente;
+        private readonly IMapper _mapper;
 
         public ApplicationServiceCliente(IServiceCliente serviceCliente, IMapper mapper)
         {
-            this.serviceCliente = serviceCliente;            
-            this.mapper = mapper;            
+            _serviceCliente = serviceCliente;            
+            _mapper = mapper;            
         }
 
         public void Add(ClienteDto clienteDto)
         {
-            var cliente = this.mapper.Map<Cliente>(clienteDto);
-            this.serviceCliente.Add(cliente);
+            var cliente = _mapper.Map<Cliente>(clienteDto);
+            cliente.DataCadastro = DateTime.Now;
+            _serviceCliente.Add(cliente);
         }
 
         public IEnumerable<ClienteDto> GetAll()
         {
-            var clientes = this.serviceCliente.GetAll();
-            return this.mapper.Map<IEnumerable<ClienteDto>>(clientes);
+            var clientes = _serviceCliente.GetAll();
+            return _mapper.Map<IEnumerable<ClienteDto>>(clientes);
 
         }
 
-        public ClienteDto GetById(int id)
+        public ClienteDto FindById(int id)
         {   
-            var cliente = this.serviceCliente.FindById(id);
-            return this.mapper.Map<ClienteDto>(cliente);
+            var cliente = _serviceCliente.FindById(id);
+            return _mapper.Map<ClienteDto>(cliente);
         }
 
         public void Remove(ClienteDto clienteDto)
         {
-            var cliente = this.mapper.Map<Cliente>(clienteDto);
-            serviceCliente.Remove(cliente);
+            var cliente = _mapper.Map<Cliente>(clienteDto);
+            _serviceCliente.Remove(cliente);
         }
 
         public void Update(ClienteDto clienteDto)
         {
-            var cliente = this.mapper.Map<Cliente>(clienteDto);
-            serviceCliente.Update(cliente);
+            var cliente = _mapper.Map<Cliente>(clienteDto);
+            _serviceCliente.Update(cliente);
         }
     }
 }

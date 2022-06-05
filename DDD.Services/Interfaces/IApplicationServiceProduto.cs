@@ -13,6 +13,6 @@ namespace DDD.Application.Interfaces
         void Update(ProdutoDto produtoDto);
         void Remove(ProdutoDto produtoDto);
         IEnumerable<ProdutoDto> GetAll();
-        ProdutoDto GetById(int id);
+        ProdutoDto FindById(int id);
     }
 }

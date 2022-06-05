@@ -15,9 +15,9 @@ namespace DDD.Services.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string?> GetById(int id)
+        public ActionResult<string?> FindById(int id)
         {
-            return Ok(_applicationServiceCliente.GetById(id));
+            return Ok(_applicationServiceCliente.FindById(id));
         }
 
         [HttpPost]

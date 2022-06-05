@@ -8,6 +8,6 @@ namespace DDD.Application.Interfaces
         void Update(ClienteDto clienteDto);
         void Remove(ClienteDto clienteDto);
         IEnumerable<ClienteDto> GetAll();
-        ClienteDto GetById(int id);
+        ClienteDto FindById(int id);
     }
 }

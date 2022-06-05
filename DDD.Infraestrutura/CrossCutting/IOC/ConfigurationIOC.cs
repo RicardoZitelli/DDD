@@ -13,7 +13,7 @@ namespace DDD.Infrastructure.CrossCutting.IOC
         public static void Load(ContainerBuilder builder)
         {
             #region IOC
-
+            
             builder.RegisterType<ApplicationServiceCliente>().As<IApplicationServiceCliente>();
             builder.RegisterType<ApplicationServiceProduto>().As<IApplicationServiceProduto>();
             builder.RegisterType<ServiceCliente>().As<IServiceCliente>();
