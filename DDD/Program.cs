@@ -30,6 +30,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 SqlContext dbcontext = app.Services.GetRequiredService<SqlContext>();
 dbcontext.Database.EnsureCreated();
+dbcontext.Database.Migrate();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -8,43 +8,44 @@ namespace DDD.Application
 {
     public class ApplicationServiceProduto : IApplicationServiceProduto
     {
-        private readonly IServiceProduto serviceProduto;
-        private readonly IMapper mapper;
+        private readonly IServiceProduto _serviceProduto;
+        private readonly IMapper _mapper;
 
         public ApplicationServiceProduto(IServiceProduto serviceProduto, IMapper mapper)
         {
-            this.serviceProduto = serviceProduto;
-            this.mapper = mapper;
+            _serviceProduto = serviceProduto;
+            _mapper = mapper;
         }
 
         public void Add(ProdutoDto produtoDto)
         {
-            var produto = this.mapper.Map<Produto>(produtoDto);
-            this.serviceProduto.Add(produto);
+            var produto = _mapper.Map<Produto>(produtoDto);
+            produto.IsDisponivel = true;
+            _serviceProduto.Add(produto);
         }
 
         public IEnumerable<ProdutoDto> GetAll()
         {
-            var produtos = this.serviceProduto.GetAll();
-            return this.mapper.Map<IEnumerable<ProdutoDto>>(produtos);
+            var produtos = _serviceProduto.GetAll();
+            return _mapper.Map<IEnumerable<ProdutoDto>>(produtos);
         }
 
         public ProdutoDto FindById(int id)
         {
-            var produto = this.serviceProduto.FindById(id);
-            return this.mapper.Map<ProdutoDto>(produto);
+            var produto = _serviceProduto.FindById(id);
+            return _mapper.Map<ProdutoDto>(produto);
         }
 
         public void Remove(ProdutoDto produtoDto)
         {
-            var produto = this.mapper.Map<Produto>(produtoDto);
-            this.serviceProduto.Remove(produto);
+            var produto = _mapper.Map<Produto>(produtoDto);
+            _serviceProduto.Remove(produto);
         }
 
         public void Update(ProdutoDto produtoDto)
         {
-            var produto = this.mapper.Map<Produto>(produtoDto);
-            this.serviceProduto.Update(produto);
+            var produto = _mapper.Map<Produto>(produtoDto);
+            _serviceProduto.Update(produto);
         }
     }
 }
