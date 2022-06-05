@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace DDD.Application.Interfaces
 {
-    public interface IApplicationProduto
+    public interface IApplicationServiceProduto
     {
         void Add(ProdutoDto produtoDto);
         void Update(ProdutoDto produtoDto);
-        void Remove(int id);
+        void Remove(ProdutoDto produtoDto);
         IEnumerable<ProdutoDto> GetAll();
         ProdutoDto GetById(int id);
     }

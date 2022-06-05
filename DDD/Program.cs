@@ -1,4 +1,9 @@
 using DDD.Infrastructure.Data;
+using DDD.Application.Mapping;
+using DDD.Infrastructure.CrossCutting.IOC;
+using Autofac;
+using Microsoft.EntityFrameworkCore;
+using Autofac.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,11 +14,18 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSqlServer<SqlContext>(builder.Configuration.GetConnectionString("DefaultConnection"));
+//builder.Services.AddSqlServer<SqlContext>(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddDbContext<SqlContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddSwaggerGen();
+
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new ModuleIOC()));
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 var app = builder.Build();
 

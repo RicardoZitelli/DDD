@@ -2,7 +2,7 @@
 
 namespace DDD.Application.Interfaces
 {
-    public interface IApplicationCliente
+    public interface IApplicationServiceCliente
     {
         void Add(ClienteDto clienteDto);
         void Update(ClienteDto clienteDto);

@@ -3,7 +3,7 @@ using DDD.Dominio.Entities;
 
 namespace DDD.Infrastructure.Data.Repositories
 {
-    public class RepositoryCliente<TEntity> : RepositoryBase<Cliente>,IRepositoryCliente
+    public class RepositoryCliente : RepositoryBase<Cliente>,IRepositoryCliente
     {
         private readonly SqlContext sqlContext;
           

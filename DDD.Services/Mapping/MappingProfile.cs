@@ -2,9 +2,9 @@
 using DDD.Application.Dtos;
 using DDD.Dominio.Entities;
 
-namespace DDD.Infrastructure.Mapping
+namespace DDD.Application.Mapping
 {
-    internal class MappingProfile : Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
