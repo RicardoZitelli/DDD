@@ -1,25 +1,24 @@
-using DDD.Infrastructure.Data;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using DDD.Application.Mapping;
 using DDD.Infrastructure.CrossCutting.IOC;
-using Autofac;
+using DDD.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Autofac.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddSwaggerGen();
 
 //builder.Services.AddSqlServer<SqlContext>(builder.Configuration.GetConnectionString("DefaultConnection"));
 builder.Services.AddDbContext<SqlContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
-
-builder.Services.AddSwaggerGen();
 
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new ModuleIOC()));
 
@@ -27,7 +26,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure dbContext
 SqlContext dbcontext = app.Services.GetRequiredService<SqlContext>();
 dbcontext.Database.EnsureCreated();
 dbcontext.Database.Migrate();
