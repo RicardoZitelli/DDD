@@ -2,7 +2,7 @@
 
 namespace DDD.Domain.Repositories.Interfaces
 {
-    public interface IRepositoryCliente : IRepositoryBase<Cliente>
+    public interface IRepositoryTipoProduto : IRepositoryBase<TipoProduto>
     {
-    }
+    }    
 }

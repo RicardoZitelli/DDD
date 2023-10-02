@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DDD.Application.Dtos;
-using DDD.Dominio.Entities;
+using DDD.Domain.Entities;
 
 namespace DDD.Application.Mapping
 {
@@ -8,8 +8,11 @@ namespace DDD.Application.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<Cliente, ClienteDto>().ReverseMap();
-            CreateMap<Produto, ProdutoDto>().ReverseMap();            
+            CreateMap<Cliente, Dtos.Responses.ClienteDto>();
+            CreateMap<Produto, Dtos.Responses.ProdutoDto>();
+
+            CreateMap<Dtos.Requests.ClienteDto,Cliente>();
+            CreateMap<Dtos.Requests.ProdutoDto,Produto>();
         }
 
     }

@@ -1,13 +1,11 @@
-﻿using DDD.Application.Dtos;
-
-namespace DDD.Application.Interfaces
+﻿namespace DDD.Application.Interfaces
 {
     public interface IApplicationServiceCliente
     {
-        void Add(ClienteDto clienteDto);
-        void Update(ClienteDto clienteDto);
-        void Remove(ClienteDto clienteDto);
-        IEnumerable<ClienteDto> GetAll();
-        ClienteDto FindById(int id);
+        void Add(Dtos.Requests.ClienteDto clienteDto);
+        void Update(Dtos.Requests.ClienteDto clienteDto);
+        void Remove(Dtos.Requests.ClienteDto clienteDto);
+        IEnumerable<Dtos.Responses.ClienteDto> GetAll();
+        Dtos.Responses.ClienteDto FindById(int id);
     }
 }

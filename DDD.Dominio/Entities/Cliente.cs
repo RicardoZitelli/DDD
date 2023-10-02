@@ -1,4 +1,4 @@
-﻿namespace DDD.Dominio.Entities
+﻿namespace DDD.Domain.Entities
 {
     public class Cliente : Base
     {

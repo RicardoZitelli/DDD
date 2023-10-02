@@ -1,4 +1,6 @@
-﻿using DDD.Domain.Interfaces.Repositories;
+﻿using DDD.Application.Dtos.Requests;
+using DDD.Application.Dtos.Responses;
+using DDD.Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DDD.Infrastructure.Data.Repositories

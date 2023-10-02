@@ -1,5 +1,5 @@
-﻿using DDD.Domain.Interfaces.Repositories;
-using DDD.Dominio.Entities;
+﻿using DDD.Domain.Entities;
+using DDD.Domain.Repositories.Interfaces;
 
 namespace DDD.Infrastructure.Data.Repositories
 {
@@ -7,7 +7,7 @@ namespace DDD.Infrastructure.Data.Repositories
     {
         private readonly SqlContext sqlContext;
 
-        public RepositoryProduto(SqlContext sqlContext) : base(sqlContext)  
+        public RepositoryProduto(SqlContext sqlContext) : base(sqlContext)
         {
             this.sqlContext = sqlContext;
         }

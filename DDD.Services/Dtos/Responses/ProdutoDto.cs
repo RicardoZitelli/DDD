@@ -1,4 +1,4 @@
-﻿namespace DDD.Application.Dtos
+﻿namespace DDD.Application.Dtos.Responses
 {
     public class ProdutoDto
     {
@@ -7,5 +7,6 @@
         public int Quantidade { get; set; }
         public decimal Valor { get; set; }
         public bool IsDisponivel { get; set; }
+        public int TipoProdutoId { get; set; }
     }
 }

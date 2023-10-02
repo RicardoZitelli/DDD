@@ -1,4 +1,4 @@
-﻿namespace DDD.Domain.Interfaces.Repositories
+﻿namespace DDD.Domain.Repositories.Interfaces
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {

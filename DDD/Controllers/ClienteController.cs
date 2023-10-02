@@ -1,6 +1,7 @@
-﻿using DDD.Application.Dtos;
-using DDD.Application.Interfaces;
+﻿using DDD.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using DDD.Application.Dtos.Requests;
+using DDD.Application.Dtos.Responses;
 
 namespace DDD.Services.Controllers
 {
@@ -21,7 +22,7 @@ namespace DDD.Services.Controllers
         }
 
         [HttpPost]
-        public ActionResult Insert([FromBody]ClienteDto clienteDto)
+        public ActionResult Insert([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
         {
             try
             {
@@ -41,7 +42,7 @@ namespace DDD.Services.Controllers
         }
 
         [HttpPut]
-        public ActionResult Update([FromBody] ClienteDto clienteDto)
+        public ActionResult Update([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
         {
             try
             {
@@ -61,7 +62,7 @@ namespace DDD.Services.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Delete([FromBody] ClienteDto clienteDto)
+        public ActionResult Delete([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
         {
             try
             {

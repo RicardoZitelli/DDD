@@ -1,6 +1,6 @@
-﻿using DDD.Dominio.Entities;
+﻿using DDD.Domain.Entities;
 
-namespace DDD.Domain.Interfaces.Repositories
+namespace DDD.Domain.Repositories.Interfaces
 {
     public interface IRepositoryProduto : IRepositoryBase<Produto>
     {

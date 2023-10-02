@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using DDD.Application.Dtos;
 using DDD.Application.Interfaces;
 using DDD.Domain.Services.Interfaces;
-using DDD.Dominio.Entities;
+using DDD.Domain.Entities;
 
 namespace DDD.Application
 {
@@ -17,32 +16,32 @@ namespace DDD.Application
             _mapper = mapper;
         }
 
-        public void Add(ProdutoDto produtoDto)
+        public void Add(Dtos.Requests.ProdutoDto produtoDto)
         {
             var produto = _mapper.Map<Produto>(produtoDto);
             produto.IsDisponivel = true;
             _serviceProduto.Add(produto);
         }
 
-        public IEnumerable<ProdutoDto> GetAll()
+        public IEnumerable<Dtos.Responses.ProdutoDto> GetAll()
         {
             var produtos = _serviceProduto.GetAll();
-            return _mapper.Map<IEnumerable<ProdutoDto>>(produtos);
+            return _mapper.Map<IEnumerable<Dtos.Responses.ProdutoDto>>(produtos);
         }
 
-        public ProdutoDto FindById(int id)
+        public Dtos.Responses.ProdutoDto FindById(int id)
         {
             var produto = _serviceProduto.FindById(id);
-            return _mapper.Map<ProdutoDto>(produto);
+            return _mapper.Map<Dtos.Responses.ProdutoDto>(produto);
         }
 
-        public void Remove(ProdutoDto produtoDto)
+        public void Remove(Dtos.Requests.ProdutoDto produtoDto)
         {
             var produto = _mapper.Map<Produto>(produtoDto);
             _serviceProduto.Remove(produto);
         }
 
-        public void Update(ProdutoDto produtoDto)
+        public void Update(Dtos.Requests.ProdutoDto produtoDto)
         {
             var produto = _mapper.Map<Produto>(produtoDto);
             _serviceProduto.Update(produto);

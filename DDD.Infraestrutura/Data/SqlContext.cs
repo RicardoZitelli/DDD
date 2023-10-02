@@ -1,4 +1,4 @@
-﻿using DDD.Dominio.Entities;
+﻿using DDD.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DDD.Infrastructure.Data
@@ -17,6 +17,7 @@ namespace DDD.Infrastructure.Data
 
         public DbSet<Cliente>? Clientes { get; set; }  
         public DbSet<Produto>? Produtos { get; set; }
+        public DbSet<TipoProduto>? TipoProdutos { get; set; }
 
         public override int SaveChanges()
         {

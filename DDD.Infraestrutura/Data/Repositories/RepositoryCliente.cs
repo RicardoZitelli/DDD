@@ -1,5 +1,5 @@
-﻿using DDD.Domain.Interfaces.Repositories;
-using DDD.Dominio.Entities;
+﻿using DDD.Domain.Entities;
+using DDD.Domain.Repositories.Interfaces;
 
 namespace DDD.Infrastructure.Data.Repositories
 {
@@ -11,8 +11,5 @@ namespace DDD.Infrastructure.Data.Repositories
         {
             this.sqlContext = sqlContext;
         }
-
-
-
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DDD.Application.Dtos
+namespace DDD.Application.Dtos.Responses
 {
     public class ClienteDto
     {

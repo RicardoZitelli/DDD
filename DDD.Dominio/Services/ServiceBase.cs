@@ -1,4 +1,4 @@
-﻿using DDD.Domain.Interfaces.Repositories;
+﻿using DDD.Domain.Repositories.Interfaces;
 using DDD.Domain.Services.Interfaces;
 
 namespace DDD.Domain.Services
