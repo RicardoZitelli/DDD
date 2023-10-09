@@ -36,10 +36,7 @@ namespace DDD.Infrastructure.Data.Repositories
 
         public IEnumerable<TEntity> GetAll() => sqlContext.Set<TEntity>().ToList();
 
-        public TEntity GetById(int id)
-        {
-            return sqlContext.Set<TEntity>().Find(id);
-        }
+        public TEntity GetById(int id) => sqlContext.Set<TEntity>().Find(id);
 
         public void Update(TEntity entity)
         {

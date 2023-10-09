@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.Services
 {
-    internal class ServiceTipoProduto : ServiceBase<TipoProduto>, IServiceTipoProduto
+    public class ServiceTipoProduto : ServiceBase<TipoProduto>, IServiceTipoProduto
     {
         private readonly IRepositoryTipoProduto repositoryTipoProduto;
         public ServiceTipoProduto(IRepositoryTipoProduto repositoryTipoProduto) : base(repositoryTipoProduto)

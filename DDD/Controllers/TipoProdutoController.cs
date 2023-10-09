@@ -5,24 +5,24 @@ namespace DDD.Services.Controllers
 {
     [Route("api/v1/[Controller]")]
     [ApiController]
-    public class ProdutoController : Controller
+    public class TipoProdutoController : Controller
     {
-        private readonly IApplicationServiceProduto _applicationServiceProduto;
-        public ProdutoController(IApplicationServiceProduto applicationServiceProduto)
+        private readonly IApplicationServiceTipoProduto _applicationServiceTipoProduto;
+        public TipoProdutoController(IApplicationServiceTipoProduto applicationServiceTipoProduto)
         {
-            _applicationServiceProduto = applicationServiceProduto;
+            _applicationServiceTipoProduto = applicationServiceTipoProduto;
         }
 
         [HttpPost]
-        public ActionResult Insert([FromBody] Application.Dtos.Requests.ProdutoDto produtoDto)
+        public ActionResult Insert([FromBody] Application.Dtos.Requests.TipoProdutoDto tipoProdutoDto)
         {
             try
             {
-                if (produtoDto == null)
+                if (tipoProdutoDto == null)
                 {
                     return NotFound();
                 }
-                _applicationServiceProduto.Add(produtoDto);
+                _applicationServiceTipoProduto.Add(tipoProdutoDto);
                 return Ok("Produto cadastrado com sucesso");
             }
             catch (Exception ex)
@@ -34,15 +34,15 @@ namespace DDD.Services.Controllers
         }
 
         [HttpPut]
-        public ActionResult Update([FromBody] Application.Dtos.Requests.ProdutoDto produtoDto)
+        public ActionResult Update([FromBody] Application.Dtos.Requests.TipoProdutoDto tipoProdutoDto)
         {
             try
             {
-                if (produtoDto == null)
+                if (tipoProdutoDto == null)
                 {
                     return NotFound();
                 }
-                _applicationServiceProduto.Update(produtoDto);
+                _applicationServiceTipoProduto.Update(tipoProdutoDto);
                 return Ok("Produto atualizado com sucesso");
             }
             catch (Exception ex)
@@ -54,15 +54,15 @@ namespace DDD.Services.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Delete([FromBody] Application.Dtos.Requests.ProdutoDto produtoDto)
+        public ActionResult Delete([FromBody] Application.Dtos.Requests.TipoProdutoDto tipoProdutoDto)
         {
             try
             {
-                if (produtoDto == null)
+                if (tipoProdutoDto == null)
                 {
                     return NotFound();
                 }
-                _applicationServiceProduto.Remove(produtoDto);
+                _applicationServiceTipoProduto.Remove(tipoProdutoDto);
                 return Ok("Produto removido com sucesso");
             }
             catch (Exception ex)
@@ -76,13 +76,13 @@ namespace DDD.Services.Controllers
         [HttpGet]
         public ActionResult<string?> GetAll()
         {
-            return Ok(_applicationServiceProduto.GetAll());
+            return Ok(_applicationServiceTipoProduto.GetAll());
         }
 
         [HttpGet("{id}")]
         public ActionResult<string?> FindById(int id)
         {
-            return Ok(_applicationServiceProduto.FindById(id));
+            return Ok(_applicationServiceTipoProduto.FindById(id));
         }
     }
 }

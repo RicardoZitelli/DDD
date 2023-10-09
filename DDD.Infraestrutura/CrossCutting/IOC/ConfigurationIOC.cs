@@ -27,18 +27,21 @@ namespace DDD.Infrastructure.CrossCutting.IOC
         {
             builder.RegisterType<ApplicationServiceCliente>().As<IApplicationServiceCliente>();
             builder.RegisterType<ApplicationServiceProduto>().As<IApplicationServiceProduto>();
+            builder.RegisterType<ApplicationServiceTipoProduto>().As<IApplicationServiceTipoProduto>();
         }
 
         private static void ConfigurarServiços(ContainerBuilder builder)
         {
             builder.RegisterType<ServiceCliente>().As<IServiceCliente>();
             builder.RegisterType<ServiceProduto>().As<IServiceProduto>();
+            builder.RegisterType<ServiceTipoProduto>().As<IServiceTipoProduto>();
         }
 
         private static void ConfigurarRepositorios(ContainerBuilder builder)
         {
             builder.RegisterType<RepositoryCliente>().As<IRepositoryCliente>();
             builder.RegisterType<RepositoryProduto>().As<IRepositoryProduto>();
+            builder.RegisterType<RepositoryTipoProduto>().As<IRepositoryTipoProduto>();
         }
     }
 }
