@@ -14,30 +14,30 @@ namespace DDD.Infrastructure.CrossCutting.IOC
         {
             #region IOC
 
-            ConfigurarAplicacoes(builder);
+            ConfigureApplications(builder);
 
-            ConfigurarServiços(builder);
+            ConfigureServices(builder);
 
-            ConfigurarRepositorios(builder);
+            ConfigureRepositories(builder);
 
             #endregion
         }
 
-        private static void ConfigurarAplicacoes(ContainerBuilder builder)
+        private static void ConfigureApplications(ContainerBuilder builder)
         {
             builder.RegisterType<ApplicationServiceCliente>().As<IApplicationServiceCliente>();
             builder.RegisterType<ApplicationServiceProduto>().As<IApplicationServiceProduto>();
             builder.RegisterType<ApplicationServiceTipoProduto>().As<IApplicationServiceTipoProduto>();
         }
 
-        private static void ConfigurarServiços(ContainerBuilder builder)
+        private static void ConfigureServices(ContainerBuilder builder)
         {
             builder.RegisterType<ServiceCliente>().As<IServiceCliente>();
             builder.RegisterType<ServiceProduto>().As<IServiceProduto>();
             builder.RegisterType<ServiceTipoProduto>().As<IServiceTipoProduto>();
         }
 
-        private static void ConfigurarRepositorios(ContainerBuilder builder)
+        private static void ConfigureRepositories(ContainerBuilder builder)
         {
             builder.RegisterType<RepositoryCliente>().As<IRepositoryCliente>();
             builder.RegisterType<RepositoryProduto>().As<IRepositoryProduto>();
