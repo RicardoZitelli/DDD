@@ -44,10 +44,10 @@ namespace DDD.Services.Controllers
                 _applicationServiceTipoProduto.Update(tipoProdutoDto);
                 return Ok("Produto atualizado com sucesso");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw ex;
+                throw;
             }
 
         }
