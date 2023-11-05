@@ -1,0 +1,30 @@
+version: '3.4'
+
+networks:
+    demodddapp:
+
+services:
+  ddddb:
+    container_name: ddd-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 8002:1433
+    environment: 
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=1Q2w3e4r
+    networks:
+       - demodddapp
+  ddd.services:
+    container_name: ddd-example-with-docker
+    image: ${DOCKER_REGISTRY-}dddservices
+    build:
+      context: .
+      dockerfile: DDD/Dockerfile
+    ports:
+      - 8001:80
+    depends_on:
+      - ddddb
+    environment:
+      - DB_HOST=ddddb
+      - DB_NAME=DDD 
+      - DB_SA_PASSWORD=1Q2w3e4r
