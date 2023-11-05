@@ -33,10 +33,9 @@ namespace DDD.Services.Controllers
                 _applicationServiceCliente.Add(clienteDto);
                 return Ok("Cliente cadastrado com sucesso");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                throw ;
             }
            
         }
@@ -53,10 +52,9 @@ namespace DDD.Services.Controllers
                 _applicationServiceCliente.Update(clienteDto);
                 return Ok("Cliente atualizado com sucesso");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                throw;
             }
 
         }
@@ -73,10 +71,9 @@ namespace DDD.Services.Controllers
                 _applicationServiceCliente.Remove(clienteDto);
                 return Ok("Cliente atualizado com sucesso");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                throw ;
             }
 
         }

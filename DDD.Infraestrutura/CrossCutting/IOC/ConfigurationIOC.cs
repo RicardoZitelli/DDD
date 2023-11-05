@@ -8,7 +8,7 @@ using DDD.Infrastructure.Data.Repositories;
 
 namespace DDD.Infrastructure.CrossCutting.IOC
 {
-    public class ConfigurationIOC
+    public static class ConfigurationIOC
     {
         public static void Load(ContainerBuilder builder)
         {

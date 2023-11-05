@@ -26,9 +26,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 var app = builder.Build();
 
-// Configure dbContext
 SqlContext dbcontext = app.Services.GetRequiredService<SqlContext>();
-dbcontext.Database.EnsureCreated();
 dbcontext.Database.Migrate();
 
 // Configure the HTTP request pipeline.

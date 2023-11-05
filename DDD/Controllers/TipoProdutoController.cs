@@ -25,10 +25,9 @@ namespace DDD.Services.Controllers
                 _applicationServiceTipoProduto.Add(tipoProdutoDto);
                 return Ok("Produto cadastrado com sucesso");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                throw;
             }
 
         }
@@ -65,10 +64,9 @@ namespace DDD.Services.Controllers
                 _applicationServiceTipoProduto.Remove(tipoProdutoDto);
                 return Ok("Produto removido com sucesso");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                throw ex;
+                throw;
             }
 
         }

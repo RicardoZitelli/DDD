@@ -1,6 +1,4 @@
-﻿using DDD.Application.Dtos.Requests;
-using DDD.Application.Dtos.Responses;
-using DDD.Domain.Repositories.Interfaces;
+﻿using DDD.Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DDD.Infrastructure.Data.Repositories
@@ -8,11 +6,8 @@ namespace DDD.Infrastructure.Data.Repositories
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
         private readonly SqlContext sqlContext;
-
-        public RepositoryBase(SqlContext sqlContext)
-        {
-            this.sqlContext = sqlContext;
-        }
+        
+        public RepositoryBase(SqlContext sqlContext) => this.sqlContext = sqlContext;
 
         public void Add(TEntity entity)
         {
