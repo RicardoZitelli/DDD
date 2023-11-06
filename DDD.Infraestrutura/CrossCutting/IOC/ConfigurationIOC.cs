@@ -25,23 +25,23 @@ namespace DDD.Infrastructure.CrossCutting.IOC
 
         private static void ConfigureApplications(ContainerBuilder builder)
         {
-            builder.RegisterType<ApplicationServiceCliente>().As<IApplicationServiceCliente>();
-            builder.RegisterType<ApplicationServiceProduto>().As<IApplicationServiceProduto>();
-            builder.RegisterType<ApplicationServiceTipoProduto>().As<IApplicationServiceTipoProduto>();
+            builder.RegisterType<ApplicationServiceCliente>().As<IApplicationServiceCustomer>();
+            builder.RegisterType<ApplicationServiceProduct>().As<IApplicationServiceProduct>();
+            builder.RegisterType<ApplicationServiceProductType>().As<IApplicationServiceProductType>();
         }
 
         private static void ConfigureServices(ContainerBuilder builder)
         {
-            builder.RegisterType<ServiceCliente>().As<IServiceCliente>();
-            builder.RegisterType<ServiceProduto>().As<IServiceProduto>();
-            builder.RegisterType<ServiceTipoProduto>().As<IServiceTipoProduto>();
+            builder.RegisterType<ServiceCustomer>().As<IServiceCustomer>();
+            builder.RegisterType<ServiceProduct>().As<IServiceProduct>();
+            builder.RegisterType<ServiceProductType>().As<IServiceProductType>();
         }
 
         private static void ConfigureRepositories(ContainerBuilder builder)
         {
-            builder.RegisterType<RepositoryCliente>().As<IRepositoryCliente>();
-            builder.RegisterType<RepositoryProduto>().As<IRepositoryProduto>();
-            builder.RegisterType<RepositoryTipoProduto>().As<IRepositoryTipoProduto>();
+            builder.RegisterType<RepositoryCustomer>().As<IRepositoryCustomer>();
+            builder.RegisterType<RepositoryProduct>().As<IRepositoryProduct>();
+            builder.RegisterType<RepositoryProductType>().As<IRepositoryProductType>();
         }
     }
 }

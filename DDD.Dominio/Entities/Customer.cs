@@ -1,6 +1,6 @@
 ﻿namespace DDD.Domain.Entities
 {
-    public class Cliente : Base
+    public class Customer : Base
     {
 
         public string? Nome { get; set; }

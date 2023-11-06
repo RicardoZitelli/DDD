@@ -1,6 +1,6 @@
 ﻿namespace DDD.Domain.Entities
 {
-    public class TipoProduto : Base
+    public class ProductType : Base
     {
         public string? Descricao { get; set; }
         public DateTimeOffset DataCriacao { get; set; }

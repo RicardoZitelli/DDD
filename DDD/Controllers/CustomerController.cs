@@ -7,24 +7,24 @@ namespace DDD.Services.Controllers
 {
     [Route("[Controller]")]
     [ApiController]
-    public class ClienteController : Controller
+    public class CustomerController : Controller
     {
-        private readonly IApplicationServiceCliente _applicationServiceCustomer;
-        public ClienteController(IApplicationServiceCliente applicationServiceCliente)
+        private readonly IApplicationServiceCustomer _applicationServiceCustomer;
+        public CustomerController(IApplicationServiceCustomer applicationServiceCliente)
         {
             _applicationServiceCustomer = applicationServiceCliente;
         }
 
         [HttpPost]
-        public async Task<ActionResult> InsertAsync([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
+        public async Task<ActionResult> InsertAsync([FromBody] Application.Dtos.Requests.CustomerDto customerDto)
         {
             try
             {
-                if (clienteDto == null)
+                if (customerDto == null)
                 {
                     return NotFound();
                 }
-                await _applicationServiceCustomer.AddAsync(clienteDto);
+                await _applicationServiceCustomer.AddAsync(customerDto);
                 return Ok("Customer successfully registered");
             }
             catch (Exception ex)
@@ -35,15 +35,15 @@ namespace DDD.Services.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateAsync([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
+        public async Task<ActionResult> UpdateAsync([FromBody] Application.Dtos.Requests.CustomerDto customerDto)
         {
             try
             {
-                if (clienteDto == null)
+                if (customerDto == null)
                 {
                     return NotFound();
                 }
-                await _applicationServiceCustomer.UpdateAsync(clienteDto);
+                await _applicationServiceCustomer.UpdateAsync(customerDto);
                 return Ok("Customer successfully updated");
             }
             catch (Exception ex)
@@ -54,16 +54,16 @@ namespace DDD.Services.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeleteAsync([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
+        public async Task<ActionResult> DeleteAsync([FromBody] Application.Dtos.Requests.CustomerDto customerDto)
         {
             try
             {
-                if (clienteDto == null)
+                if (customerDto == null)
                 {
                     return NotFound();
                 }
-                await _applicationServiceCustomer.RemoveAsync(clienteDto);
-                return Ok("Customer successfully deleted");
+                await _applicationServiceCustomer.RemoveAsync(customerDto);
+                return Ok("Customer successfully removed");
             }
             catch (Exception ex)
             {

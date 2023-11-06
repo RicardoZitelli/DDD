@@ -2,7 +2,7 @@
 
 namespace DDD.Domain.Entities
 {
-    public class Produto : Base
+    public class Product : Base
     {
         [Required]
         public string? Nome { get; set; }

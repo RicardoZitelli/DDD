@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DDD.Application.Dtos.Responses
 {
-    public class ClienteDto
+    public class CustomerDto
     {
         public int? Id { get; set; }
         public string? Nome { get; set; }

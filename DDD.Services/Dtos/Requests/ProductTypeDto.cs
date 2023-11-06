@@ -1,6 +1,6 @@
 ﻿namespace DDD.Application.Dtos.Requests
 {
-    public class TipoProdutoDto
+    public class ProductTypeDto
     {
         public int Id { get; set; }
         public string? Descricao { get; set; }  

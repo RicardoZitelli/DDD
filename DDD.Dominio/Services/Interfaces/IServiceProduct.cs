@@ -2,7 +2,7 @@
 
 namespace DDD.Domain.Services.Interfaces
 {
-    public interface IServiceProduto : IServiceBase<Produto>
+    public interface IServiceProduct : IServiceBase<Product>
     {
     }
 }

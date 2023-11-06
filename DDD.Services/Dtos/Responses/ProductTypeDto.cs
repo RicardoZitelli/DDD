@@ -1,6 +1,6 @@
 ﻿namespace DDD.Application.Dtos.Responses
 {
-    public class TipoProdutoDto
+    public class ProductTypeDto
     {
         public int Id { get; set; }
         public string? Descricao { get; set; }

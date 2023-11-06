@@ -16,8 +16,8 @@ namespace DDD.Infrastructure.Data
         {           
         }
 
-        public DbSet<Cliente>? Clientes { get; set; }  
-        public DbSet<Produto>? Produtos { get; set; }
-        public DbSet<TipoProduto>? TipoProdutos { get; set; }
+        public DbSet<Customer>? Clientes { get; set; }  
+        public DbSet<Product>? Produtos { get; set; }
+        public DbSet<ProductType>? TipoProdutos { get; set; }
     }
 }

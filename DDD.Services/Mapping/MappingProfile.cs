@@ -8,13 +8,13 @@ namespace DDD.Application.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<Cliente, Dtos.Responses.ClienteDto>();
-            CreateMap<Produto, Dtos.Responses.ProdutoDto>();
-            CreateMap<TipoProduto,Dtos.Responses.TipoProdutoDto>();
+            CreateMap<Customer, Dtos.Responses.CustomerDto>();
+            CreateMap<Product, Dtos.Responses.ProductDto>();
+            CreateMap<ProductType,Dtos.Responses.ProductTypeDto>();
 
-            CreateMap<Dtos.Requests.ClienteDto,Cliente>();
-            CreateMap<Dtos.Requests.ProdutoDto,Produto>();
-            CreateMap<Dtos.Requests.TipoProdutoDto, TipoProduto>();
+            CreateMap<Dtos.Requests.CustomerDto,Customer>();
+            CreateMap<Dtos.Requests.ProductDto,Product>();
+            CreateMap<Dtos.Requests.ProductTypeDto, ProductType>();
         }
 
     }

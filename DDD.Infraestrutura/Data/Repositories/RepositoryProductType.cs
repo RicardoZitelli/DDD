@@ -3,9 +3,9 @@ using DDD.Domain.Repositories.Interfaces;
 
 namespace DDD.Infrastructure.Data.Repositories
 {
-    public class RepositoryTipoProduto : RepositoryBase<TipoProduto>, IRepositoryTipoProduto
+    public class RepositoryProductType : RepositoryBase<ProductType>, IRepositoryProductType
     {        
-        public RepositoryTipoProduto(SqlContext sqlContext) : base(sqlContext)
+        public RepositoryProductType(SqlContext sqlContext) : base(sqlContext)
         {
            
         }

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DDD.Domain.Services
 {
-    public class ServiceTipoProduto : ServiceBase<TipoProduto>, IServiceTipoProduto
+    public class ServiceProductType : ServiceBase<ProductType>, IServiceProductType
     {        
-        public ServiceTipoProduto(IRepositoryTipoProduto repositoryTipoProduto) : base(repositoryTipoProduto)
+        public ServiceProductType(IRepositoryProductType repositoryTipoProduto) : base(repositoryTipoProduto)
         {            
         }
     }

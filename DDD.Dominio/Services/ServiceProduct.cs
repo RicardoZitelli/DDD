@@ -4,9 +4,9 @@ using DDD.Domain.Entities;
 
 namespace DDD.Domain.Services
 {
-    public class ServiceProduto : ServiceBase<Produto>, IServiceProduto
+    public class ServiceProduct : ServiceBase<Product>, IServiceProduct
     {        
-        public ServiceProduto(IRepositoryProduto repositoryProduto) : base(repositoryProduto)
+        public ServiceProduct(IRepositoryProduct repositoryProduto) : base(repositoryProduto)
         {
             
         }
