@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DDD.Infrastructure.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InititalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,7 @@ namespace DDD.Infrastructure.Migrations
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Sobrenome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataCadastro = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     IsAtivo = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -49,8 +49,8 @@ namespace DDD.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataAlteracao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataCriacao = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DataAlteracao = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     Ativo = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

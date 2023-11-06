@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DDD.Infrastructure.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20231104071823_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20231106080353_InititalMigration")]
+    partial class InititalMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,8 +32,8 @@ namespace DDD.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset>("DataCadastro")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -89,11 +89,11 @@ namespace DDD.Infrastructure.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset?>("DataAlteracao")
+                        .HasColumnType("datetimeoffset");
 
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset>("DataCriacao")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");

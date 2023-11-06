@@ -15,12 +15,6 @@ namespace DDD.Services.Controllers
             _applicationServiceCliente = applicationServiceCliente;
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<string?>> FindByIdAsync(int id)
-        {
-            return Ok(await _applicationServiceCliente.FindByIdAsync(id));
-        }
-
         [HttpPost]
         public async Task<ActionResult> InsertAsync([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
         {
@@ -33,9 +27,9 @@ namespace DDD.Services.Controllers
                 await _applicationServiceCliente.AddAsync(clienteDto);
                 return Ok("Cliente cadastrado com sucesso");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw ;
+                return BadRequest($"Erro: {ex.Message}");
             }
            
         }
@@ -52,9 +46,9 @@ namespace DDD.Services.Controllers
                 await _applicationServiceCliente.UpdateAsync(clienteDto);
                 return Ok("Cliente atualizado com sucesso");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return BadRequest($"Erro: {ex.Message}");
             }
 
         }
@@ -71,11 +65,17 @@ namespace DDD.Services.Controllers
                 await _applicationServiceCliente.RemoveAsync(clienteDto);
                 return Ok("Cliente atualizado com sucesso");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw ;
+                return BadRequest($"Erro: {ex.Message}");
             }
 
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<string?>> FindByIdAsync(int id)
+        {
+            return Ok(await _applicationServiceCliente.FindByIdAsync(id));
         }
 
         [HttpGet]

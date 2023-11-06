@@ -30,8 +30,8 @@ namespace DDD.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset>("DataCadastro")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -87,11 +87,11 @@ namespace DDD.Infrastructure.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset?>("DataAlteracao")
+                        .HasColumnType("datetimeoffset");
 
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTimeOffset>("DataCriacao")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");

@@ -27,7 +27,7 @@ namespace DDD.Services.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(error: string.Format("Erro: {ex}",ex.Message));
+                return BadRequest($"Erro: {ex.Message}");
             }
 
         }
@@ -46,7 +46,7 @@ namespace DDD.Services.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(error: string.Format("Erro: {ex}", ex.Message));
+                return BadRequest($"Erro: {ex.Message}");
             }
 
         }
@@ -65,7 +65,7 @@ namespace DDD.Services.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(error: string.Format("Erro: {ex}", ex.Message));
+                return BadRequest($"Erro: {ex.Message}");
             }
 
         }

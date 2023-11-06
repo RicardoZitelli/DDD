@@ -13,22 +13,7 @@ namespace DDD.Infrastructure.Data
         }
 
         public SqlContext(DbContextOptions<SqlContext> options) : base(options)
-        {
-            try
-            {
-                if (Database.GetService<IDatabaseCreator>() is RelationalDatabaseCreator databaseCreator)
-                {
-                    if (!databaseCreator.CanConnect()) 
-                        databaseCreator.Create();
-
-                    if (!databaseCreator.HasTables()) 
-                        databaseCreator.CreateTables();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+        {           
         }
 
         public DbSet<Cliente>? Clientes { get; set; }  

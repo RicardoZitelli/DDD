@@ -21,6 +21,8 @@ namespace DDD.Application
         {
             var tipoProduto = _mapper.Map<TipoProduto>(produtoDto);
             tipoProduto.Ativo = true;
+            tipoProduto.DataCriacao = DateTime.Now;
+            tipoProduto.DataAlteracao = null;
             await _serviceTipoProduto.AddAsync(tipoProduto);
         }
 

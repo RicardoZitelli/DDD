@@ -25,9 +25,9 @@ namespace DDD.Services.Controllers
                 await _applicationServiceTipoProduto.AddAsync(tipoProdutoDto);
                 return Ok("Produto cadastrado com sucesso");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return BadRequest($"Erro: {ex.Message}");
             }
 
         }
@@ -44,10 +44,10 @@ namespace DDD.Services.Controllers
                 await _applicationServiceTipoProduto.UpdateAsync(tipoProdutoDto);
                 return Ok("Produto atualizado com sucesso");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                return BadRequest($"Erro: {ex.Message}");
             }
 
         }
@@ -64,9 +64,9 @@ namespace DDD.Services.Controllers
                 await _applicationServiceTipoProduto.RemoveAsync(tipoProdutoDto);
                 return Ok("Produto removido com sucesso");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return BadRequest($"Erro: {ex.Message}");
             }
 
         }
