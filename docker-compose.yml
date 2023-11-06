@@ -16,6 +16,8 @@ services:
       - MSSQL_PID=Express
     networks:
        - demodddapp
+    volumes:  
+      - sqlserver_data:/var/opt/mssql  
   ddd.services:
     container_name: ddd-example-with-docker
     image: ${DOCKER_REGISTRY-}dddservices
@@ -34,4 +36,6 @@ services:
       - DB_PORT=1433
     networks:
       - demodddapp
+volumes:
+  sqlserver_data: 
   

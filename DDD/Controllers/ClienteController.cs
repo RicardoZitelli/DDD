@@ -9,10 +9,10 @@ namespace DDD.Services.Controllers
     [ApiController]
     public class ClienteController : Controller
     {
-        private readonly IApplicationServiceCliente _applicationServiceCliente;
+        private readonly IApplicationServiceCliente _applicationServiceCustomer;
         public ClienteController(IApplicationServiceCliente applicationServiceCliente)
         {
-            _applicationServiceCliente = applicationServiceCliente;
+            _applicationServiceCustomer = applicationServiceCliente;
         }
 
         [HttpPost]
@@ -24,12 +24,12 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
-                await _applicationServiceCliente.AddAsync(clienteDto);
-                return Ok("Cliente cadastrado com sucesso");
+                await _applicationServiceCustomer.AddAsync(clienteDto);
+                return Ok("Customer successfully registered");
             }
             catch (Exception ex)
             {
-                return BadRequest($"Erro: {ex.Message}");
+                return BadRequest($"Error: {ex.Message}");
             }
            
         }
@@ -43,12 +43,12 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
-                await _applicationServiceCliente.UpdateAsync(clienteDto);
-                return Ok("Cliente atualizado com sucesso");
+                await _applicationServiceCustomer.UpdateAsync(clienteDto);
+                return Ok("Customer successfully updated");
             }
             catch (Exception ex)
             {
-                return BadRequest($"Erro: {ex.Message}");
+                return BadRequest($"Error: {ex.Message}");
             }
 
         }
@@ -62,12 +62,12 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
-                await _applicationServiceCliente.RemoveAsync(clienteDto);
-                return Ok("Cliente atualizado com sucesso");
+                await _applicationServiceCustomer.RemoveAsync(clienteDto);
+                return Ok("Customer successfully deleted");
             }
             catch (Exception ex)
             {
-                return BadRequest($"Erro: {ex.Message}");
+                return BadRequest($"Error: {ex.Message}");
             }
 
         }
@@ -75,13 +75,13 @@ namespace DDD.Services.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<string?>> FindByIdAsync(int id)
         {
-            return Ok(await _applicationServiceCliente.FindByIdAsync(id));
+            return Ok(await _applicationServiceCustomer.FindByIdAsync(id));
         }
 
         [HttpGet]
         public async Task<ActionResult<string?>> GetAllAsync()
         {
-            return Ok(await _applicationServiceCliente.GetAllAsync());
+            return Ok(await _applicationServiceCustomer.GetAllAsync());
         }
 
     }
