@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 
 var connectionString = builder
     .Configuration
-    .GetConnectionString("DefaultConnection2")?
+    .GetConnectionString("DefaultConnection")?
     .Replace("{Server}", Environment.GetEnvironmentVariable("DB_HOST"))    
     .Replace("{Database}", "DB_NAME")
     .Replace("{User_Id}", "DB_SA_USER_ID")
