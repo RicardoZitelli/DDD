@@ -2,10 +2,10 @@
 {
     public interface IApplicationServiceCliente
     {
-        void Add(Dtos.Requests.ClienteDto clienteDto);
-        void Update(Dtos.Requests.ClienteDto clienteDto);
-        void Remove(Dtos.Requests.ClienteDto clienteDto);
-        IEnumerable<Dtos.Responses.ClienteDto> GetAll();
-        Dtos.Responses.ClienteDto FindById(int id);
+        Task AddAsync(Dtos.Requests.ClienteDto clienteDto);
+        Task UpdateAsync(Dtos.Requests.ClienteDto clienteDto);
+        Task RemoveAsync(Dtos.Requests.ClienteDto clienteDto);
+        Task<IEnumerable<Dtos.Responses.ClienteDto>> GetAllAsync();
+        Task<Dtos.Responses.ClienteDto> FindByIdAsync(int id);
     }
 }

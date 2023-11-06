@@ -2,10 +2,10 @@
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {
-        void Add(TEntity entity);
-        void Update(TEntity entity);
-        void Remove(TEntity entity);
-        IEnumerable<TEntity> GetAll();
-        TEntity GetById(int id);
+        Task AddAsync(TEntity entity);
+        Task UpdateAsync(TEntity entity);
+        Task RemoveAsync(TEntity entity);
+        Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<TEntity?> GetByIdAsync(int id);
     }
 }

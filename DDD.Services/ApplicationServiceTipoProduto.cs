@@ -2,6 +2,7 @@
 using DDD.Application.Interfaces;
 using DDD.Domain.Services.Interfaces;
 using DDD.Domain.Entities;
+using DDD.Application.Dtos.Responses;
 
 namespace DDD.Application
 {
@@ -16,35 +17,35 @@ namespace DDD.Application
             _mapper = mapper;
         }
 
-        public void Add(Dtos.Requests.TipoProdutoDto produtoDto)
+        public async Task AddAsync(Dtos.Requests.TipoProdutoDto produtoDto)
         {
             var tipoProduto = _mapper.Map<TipoProduto>(produtoDto);
             tipoProduto.Ativo = true;
-            _serviceTipoProduto.Add(tipoProduto);
+            await _serviceTipoProduto.AddAsync(tipoProduto);
         }
 
-        public IEnumerable<Dtos.Responses.TipoProdutoDto> GetAll()
+        public async Task<IEnumerable<Dtos.Responses.TipoProdutoDto>> GetAllAsync()
         {
-            var tipoProdutos = _serviceTipoProduto.GetAll();
+            var tipoProdutos = await _serviceTipoProduto.GetAllAsync();
             return _mapper.Map<IEnumerable<Dtos.Responses.TipoProdutoDto>>(tipoProdutos);
         }
 
-        public Dtos.Responses.TipoProdutoDto FindById(int id)
+        public async Task<TipoProdutoDto> FindByIdAsync(int id)
         {
-            var produto = _serviceTipoProduto.FindById(id);
+            var produto = await _serviceTipoProduto.FindByIdAsync(id);
             return _mapper.Map<Dtos.Responses.TipoProdutoDto>(produto);
         }
 
-        public void Remove(Dtos.Requests.TipoProdutoDto produtoDto)
+        public async Task RemoveAsync(Dtos.Requests.TipoProdutoDto produtoDto)
         {
             var tipoProduto = _mapper.Map<TipoProduto>(produtoDto);
-            _serviceTipoProduto.Remove(tipoProduto);
+            await _serviceTipoProduto.RemoveAsync(tipoProduto);
         }
 
-        public void Update(Dtos.Requests.TipoProdutoDto produtoDto)
+        public async Task UpdateAsync(Dtos.Requests.TipoProdutoDto produtoDto)
         {
             var tipoProduto = _mapper.Map<TipoProduto>(produtoDto);
-            _serviceTipoProduto.Update(tipoProduto);
+            await _serviceTipoProduto.UpdateAsync(tipoProduto);
         }
     }
 }

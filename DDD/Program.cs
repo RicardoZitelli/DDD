@@ -17,13 +17,13 @@ builder.Services.AddSwaggerGen();
 
 var connectionString = builder
     .Configuration
-    .GetConnectionString("DefaultConnection")?
+    .GetConnectionString("DefaultConnection1")?
     .Replace("{Server}", Environment.GetEnvironmentVariable("DB_HOST"))
     .Replace("{Database}", "DB_NAME")    
     .Replace("{Password}", "DB_SA_PASSWORD");
 
 builder.Services.AddDbContext<SqlContext>(options => 
-    options.UseSqlServer());
+    options.UseSqlServer(string.IsNullOrWhiteSpace(connectionString) ? "" : connectionString));
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

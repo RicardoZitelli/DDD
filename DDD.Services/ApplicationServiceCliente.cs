@@ -2,7 +2,7 @@
 using DDD.Application.Interfaces;
 using DDD.Domain.Services.Interfaces;
 using DDD.Domain.Entities;
-using DDD.Application.Dtos;
+using DDD.Application.Dtos.Responses;
 
 namespace DDD.Application
 {
@@ -17,36 +17,36 @@ namespace DDD.Application
             _mapper = mapper;            
         }
 
-        public void Add(Dtos.Requests.ClienteDto clienteDto)
+        public async Task AddAsync(Dtos.Requests.ClienteDto clienteDto)
         {
             var cliente = _mapper.Map<Cliente>(clienteDto);
             cliente.DataCadastro = DateTime.Now;
-            _serviceCliente.Add(cliente);
+            await _serviceCliente.AddAsync(cliente);
         }
 
-        public IEnumerable<Dtos.Responses.ClienteDto> GetAll()
+        public async Task<IEnumerable<ClienteDto>> GetAllAsync()
         {
-            var clientes = _serviceCliente.GetAll();
-            return _mapper.Map<IEnumerable<Dtos.Responses.ClienteDto>>(clientes);
+            var clientes = await _serviceCliente.GetAllAsync();
+            return _mapper.Map<IEnumerable<ClienteDto>>(clientes);
 
         }
 
-        public Dtos.Responses.ClienteDto FindById(int id)
+        public async Task<ClienteDto> FindByIdAsync(int id)
         {   
-            var cliente = _serviceCliente.FindById(id);
-            return _mapper.Map<Dtos.Responses.ClienteDto>(cliente);
+            var cliente = await _serviceCliente.FindByIdAsync(id);
+            return _mapper.Map<ClienteDto>(cliente);
         }
 
-        public void Remove(Dtos.Requests.ClienteDto clienteDto)
+        public async Task RemoveAsync(Dtos.Requests.ClienteDto clienteDto)
         {
             var cliente = _mapper.Map<Cliente>(clienteDto);
-            _serviceCliente.Remove(cliente);
+            await _serviceCliente.RemoveAsync(cliente);
         }
 
-        public void Update(Dtos.Requests.ClienteDto clienteDto)
+        public async Task UpdateAsync(Dtos.Requests.ClienteDto clienteDto)
         {
             var cliente = _mapper.Map<Cliente>(clienteDto);
-            _serviceCliente.Update(cliente);
+            await _serviceCliente.UpdateAsync(cliente);
         }
     }
 }

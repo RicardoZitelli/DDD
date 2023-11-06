@@ -2,10 +2,10 @@
 {
     public interface IApplicationServiceProduto
     {
-        void Add(Dtos.Requests.ProdutoDto produtoDto);
-        void Update(Dtos.Requests.ProdutoDto produtoDto);
-        void Remove(Dtos.Requests.ProdutoDto produtoDto);
-        IEnumerable<Dtos.Responses.ProdutoDto> GetAll();
-        Dtos.Responses.ProdutoDto FindById(int id);
+        Task AddAsync(Dtos.Requests.ProdutoDto produtoDto);
+        Task UpdateAsync(Dtos.Requests.ProdutoDto produtoDto);
+        Task RemoveAsync(Dtos.Requests.ProdutoDto produtoDto);
+        Task<IEnumerable<Dtos.Responses.ProdutoDto>> GetAllAsync();
+        Task<Dtos.Responses.ProdutoDto> FindByIdAsync(int id);
     }
 }

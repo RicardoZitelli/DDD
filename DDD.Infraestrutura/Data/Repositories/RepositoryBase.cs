@@ -9,12 +9,12 @@ namespace DDD.Infrastructure.Data.Repositories
         
         public RepositoryBase(SqlContext sqlContext) => this.sqlContext = sqlContext;
 
-        public void Add(TEntity entity)
+        public async Task AddAsync(TEntity entity)
         {
             try
             {
                 sqlContext.Set<TEntity>().Add(entity);
-                sqlContext.SaveChanges();
+                await sqlContext.SaveChangesAsync();
             }
             catch (Exception)
             {
@@ -23,20 +23,20 @@ namespace DDD.Infrastructure.Data.Repositories
 
         }
 
-        public void Remove(TEntity entity)
+        public async Task RemoveAsync(TEntity entity)
         {
             sqlContext.Set<TEntity>().Remove(entity);
-            sqlContext.SaveChanges();
+            await sqlContext.SaveChangesAsync();
         }
 
-        public IEnumerable<TEntity> GetAll() => sqlContext.Set<TEntity>().ToList();
+        public async Task<IEnumerable<TEntity>> GetAllAsync() => await sqlContext.Set<TEntity>().ToListAsync();
 
-        public TEntity GetById(int id) => sqlContext.Set<TEntity>().Find(id);
+        public async Task<TEntity?> GetByIdAsync(int id) => await sqlContext.Set<TEntity>().FindAsync(id);
 
-        public void Update(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
             sqlContext.Entry(entity).State = EntityState.Modified;
-            sqlContext.SaveChanges();
+            await sqlContext.SaveChangesAsync();
         }
     }
 }

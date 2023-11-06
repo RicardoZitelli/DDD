@@ -14,7 +14,7 @@ namespace DDD.Services.Controllers
         }
 
         [HttpPost]
-        public ActionResult Insert([FromBody] Application.Dtos.Requests.TipoProdutoDto tipoProdutoDto)
+        public async Task<ActionResult> InsertAsync([FromBody] Application.Dtos.Requests.TipoProdutoDto tipoProdutoDto)
         {
             try
             {
@@ -22,7 +22,7 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
-                _applicationServiceTipoProduto.Add(tipoProdutoDto);
+                await _applicationServiceTipoProduto.AddAsync(tipoProdutoDto);
                 return Ok("Produto cadastrado com sucesso");
             }
             catch (Exception)
@@ -33,7 +33,7 @@ namespace DDD.Services.Controllers
         }
 
         [HttpPut]
-        public ActionResult Update([FromBody] Application.Dtos.Requests.TipoProdutoDto tipoProdutoDto)
+        public async Task<ActionResult> UpdateAsync([FromBody] Application.Dtos.Requests.TipoProdutoDto tipoProdutoDto)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
-                _applicationServiceTipoProduto.Update(tipoProdutoDto);
+                await _applicationServiceTipoProduto.UpdateAsync(tipoProdutoDto);
                 return Ok("Produto atualizado com sucesso");
             }
             catch (Exception)
@@ -53,7 +53,7 @@ namespace DDD.Services.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Delete([FromBody] Application.Dtos.Requests.TipoProdutoDto tipoProdutoDto)
+        public async Task<ActionResult> DeleteAsync([FromBody] Application.Dtos.Requests.TipoProdutoDto tipoProdutoDto)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
-                _applicationServiceTipoProduto.Remove(tipoProdutoDto);
+                await _applicationServiceTipoProduto.RemoveAsync(tipoProdutoDto);
                 return Ok("Produto removido com sucesso");
             }
             catch (Exception)
@@ -72,15 +72,15 @@ namespace DDD.Services.Controllers
         }
 
         [HttpGet]
-        public ActionResult<string?> GetAll()
+        public async Task<ActionResult<string?>> GetAllAsync()
         {
-            return Ok(_applicationServiceTipoProduto.GetAll());
+            return Ok(await _applicationServiceTipoProduto.GetAllAsync());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string?> FindById(int id)
+        public async Task<ActionResult<string?>> FindByIdAsync(int id)
         {
-            return Ok(_applicationServiceTipoProduto.FindById(id));
+            return Ok(await _applicationServiceTipoProduto.FindByIdAsync(id));
         }
     }
 }

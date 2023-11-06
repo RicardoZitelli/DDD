@@ -16,35 +16,35 @@ namespace DDD.Application
             _mapper = mapper;
         }
 
-        public void Add(Dtos.Requests.ProdutoDto produtoDto)
+        public async Task AddAsync(Dtos.Requests.ProdutoDto produtoDto)
         {
             var produto = _mapper.Map<Produto>(produtoDto);
             produto.IsDisponivel = true;
-            _serviceProduto.Add(produto);
+            await _serviceProduto.AddAsync(produto);
         }
 
-        public IEnumerable<Dtos.Responses.ProdutoDto> GetAll()
+        public async Task<IEnumerable<Dtos.Responses.ProdutoDto>> GetAllAsync()
         {
-            var produtos = _serviceProduto.GetAll();
+            var produtos = await _serviceProduto.GetAllAsync();
             return _mapper.Map<IEnumerable<Dtos.Responses.ProdutoDto>>(produtos);
         }
 
-        public Dtos.Responses.ProdutoDto FindById(int id)
+        public async Task<Dtos.Responses.ProdutoDto> FindByIdAsync(int id)
         {
-            var produto = _serviceProduto.FindById(id);
+            var produto = await _serviceProduto.FindByIdAsync(id);
             return _mapper.Map<Dtos.Responses.ProdutoDto>(produto);
         }
 
-        public void Remove(Dtos.Requests.ProdutoDto produtoDto)
+        public async Task RemoveAsync(Dtos.Requests.ProdutoDto produtoDto)
         {
             var produto = _mapper.Map<Produto>(produtoDto);
-            _serviceProduto.Remove(produto);
+            await _serviceProduto.RemoveAsync(produto);
         }
 
-        public void Update(Dtos.Requests.ProdutoDto produtoDto)
+        public async Task UpdateAsync(Dtos.Requests.ProdutoDto produtoDto)
         {
             var produto = _mapper.Map<Produto>(produtoDto);
-            _serviceProduto.Update(produto);
+            await _serviceProduto.UpdateAsync(produto);
         }
     }
 }

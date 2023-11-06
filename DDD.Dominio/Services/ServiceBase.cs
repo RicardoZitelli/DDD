@@ -11,14 +11,14 @@ namespace DDD.Domain.Services
             this.repository = repository;
         }
 
-        public void Add(TEntity obj) => repository.Add(obj);            
+        public async Task AddAsync(TEntity obj) => await repository.AddAsync(obj);            
         
-        public TEntity FindById(int id) => repository.GetById(id);        
+        public async Task<TEntity?> FindByIdAsync(int id) => await repository.GetByIdAsync(id);        
         
-        public IEnumerable<TEntity> GetAll() => repository.GetAll();
+        public async Task<IEnumerable<TEntity>> GetAllAsync() => await repository.GetAllAsync();
         
-        public void Remove(TEntity obj) => repository.Remove(obj);
+        public async Task RemoveAsync(TEntity obj) => await repository.RemoveAsync(obj);
         
-        public void Update(TEntity obj) => repository.Update(obj);        
+        public async Task UpdateAsync(TEntity obj) => await repository.UpdateAsync(obj);        
     }
 }

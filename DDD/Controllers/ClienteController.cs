@@ -16,13 +16,13 @@ namespace DDD.Services.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string?> FindById(int id)
+        public async Task<ActionResult<string?>> FindByIdAsync(int id)
         {
-            return Ok(_applicationServiceCliente.FindById(id));
+            return Ok(await _applicationServiceCliente.FindByIdAsync(id));
         }
 
         [HttpPost]
-        public ActionResult Insert([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
+        public async Task<ActionResult> InsertAsync([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
-                _applicationServiceCliente.Add(clienteDto);
+                await _applicationServiceCliente.AddAsync(clienteDto);
                 return Ok("Cliente cadastrado com sucesso");
             }
             catch (Exception)
@@ -41,7 +41,7 @@ namespace DDD.Services.Controllers
         }
 
         [HttpPut]
-        public ActionResult Update([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
+        public async Task<ActionResult> UpdateAsync([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
-                _applicationServiceCliente.Update(clienteDto);
+                await _applicationServiceCliente.UpdateAsync(clienteDto);
                 return Ok("Cliente atualizado com sucesso");
             }
             catch (Exception)
@@ -60,7 +60,7 @@ namespace DDD.Services.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Delete([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
+        public async Task<ActionResult> DeleteAsync([FromBody] Application.Dtos.Requests.ClienteDto clienteDto)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
-                _applicationServiceCliente.Remove(clienteDto);
+                await _applicationServiceCliente.RemoveAsync(clienteDto);
                 return Ok("Cliente atualizado com sucesso");
             }
             catch (Exception)
@@ -79,9 +79,9 @@ namespace DDD.Services.Controllers
         }
 
         [HttpGet]
-        public ActionResult<string?> GetAll()
+        public async Task<ActionResult<string?>> GetAllAsync()
         {
-            return Ok(_applicationServiceCliente.GetAll());
+            return Ok(await _applicationServiceCliente.GetAllAsync());
         }
 
     }
