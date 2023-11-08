@@ -25,7 +25,7 @@ namespace DDD.Infrastructure.CrossCutting.IOC
 
         private static void ConfigureApplications(ContainerBuilder builder)
         {
-            builder.RegisterType<ApplicationServiceCliente>().As<IApplicationServiceCustomer>();
+            builder.RegisterType<ApplicationServiceCustomer>().As<IApplicationServiceCustomer>();
             builder.RegisterType<ApplicationServiceProduct>().As<IApplicationServiceProduct>();
             builder.RegisterType<ApplicationServiceProductType>().As<IApplicationServiceProductType>();
         }
