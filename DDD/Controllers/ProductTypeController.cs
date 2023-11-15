@@ -14,6 +14,9 @@ namespace DDD.Services.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> InsertAsync([FromBody] Application.Dtos.Requests.ProductTypeDto productTypeDto)
         {
             try
@@ -33,6 +36,9 @@ namespace DDD.Services.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> UpdateAsync([FromBody] Application.Dtos.Requests.ProductTypeDto productTypeDto)
         {
             try
@@ -53,6 +59,9 @@ namespace DDD.Services.Controllers
         }
 
         [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> DeleteAsync([FromBody] Application.Dtos.Requests.ProductTypeDto productTypeDto)
         {
             try
@@ -72,6 +81,9 @@ namespace DDD.Services.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<string?>> GetAllAsync()
         {
             return Ok(await _applicationServiceProductType.GetAllAsync());

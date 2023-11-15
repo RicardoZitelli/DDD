@@ -4,6 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <ProjectGuid>fbc0f1d3-6533-4a41-a5fc-6d1af7e9bb1b</ProjectGuid>
+    <DockerComposeProjectName>ddd-project</DockerComposeProjectName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
