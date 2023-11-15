@@ -1,5 +1,4 @@
-﻿using DDD.Application.Dtos.Requests;
-using DDD.Application.Interfaces;
+﻿using DDD.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DDD.Services.Controllers
@@ -18,7 +17,7 @@ namespace DDD.Services.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> InsertAsync([FromBody] Application.Dtos.Requests.ProductTypeDto productTypeDto)
+        public async Task<ActionResult<IEnumerable<Application.Dtos.Requests.ProductTypeDto>>> InsertAsync([FromBody] Application.Dtos.Requests.ProductTypeDto productTypeDto)
         {
             try
             {
@@ -27,7 +26,8 @@ namespace DDD.Services.Controllers
                     return NotFound();
                 }
                 await _applicationServiceProductType.AddAsync(productTypeDto);
-                return Ok("Product type successfully registered");
+
+                return Ok(await _applicationServiceProductType.GetAllAsync());
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace DDD.Services.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdateAsync([FromBody] Application.Dtos.Requests.ProductTypeDto productTypeDto)
+        public async Task<ActionResult<IEnumerable<Application.Dtos.Requests.ProductTypeDto>>> UpdateAsync([FromBody] Application.Dtos.Requests.ProductTypeDto productTypeDto)
         {
             try
             {
@@ -48,40 +48,34 @@ namespace DDD.Services.Controllers
                 {
                     return NotFound();
                 }
+
                 await _applicationServiceProductType.UpdateAsync(productTypeDto);
-                return Ok("Product type successfully updated");
+
+                return Ok(await _applicationServiceProductType.GetAllAsync());
             }
             catch (Exception ex)
             {
 
                 return BadRequest($"Erro: {ex.Message}");
             }
-
         }
 
-        [HttpDelete("DeleteAsync/{id}")]
+        [HttpDelete("DeleteAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> DeleteAsync([FromRoute] int productTypeId)
+        public async Task<ActionResult<IEnumerable<Application.Dtos.Requests.ProductTypeDto>>> DeleteAsync([FromBody] Application.Dtos.Requests.ProductTypeDto productTypeDto)
         {
             try
             {
-                var productTypeDto = await _applicationServiceProductType.FindByIdAsync(productTypeId);
-
                 if (productTypeDto == null)
                 {
                     return NotFound();
                 }
-
-                await _applicationServiceProductType.RemoveAsync(new ProductTypeDto
-                    {
-                        Id = productTypeDto.Id,
-                        Descricao = productTypeDto.Descricao,
-                        Ativo = productTypeDto.Ativo
-                    });
-
-                return Ok("Product type successfully removed");
+              
+                await _applicationServiceProductType.RemoveAsync(productTypeDto);
+               
+                return Ok(await _applicationServiceProductType.GetAllAsync());
             }
             catch (Exception ex)
             {
@@ -94,13 +88,13 @@ namespace DDD.Services.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<string?>> GetAllAsync()
+        public async Task<ActionResult<IEnumerable<Application.Dtos.Requests.ProductTypeDto>>> GetAllAsync()
         {
             return Ok(await _applicationServiceProductType.GetAllAsync());
         }
 
         [HttpGet("FindByIdAsync/{id}")]
-        public async Task<ActionResult<string?>> FindByIdAsync([FromRoute] int id)
+        public async Task<ActionResult<Application.Dtos.Requests.ProductTypeDto>> FindByIdAsync([FromRoute]int id)
         {
             return Ok(await _applicationServiceProductType.FindByIdAsync(id));
         }

@@ -85,7 +85,7 @@ namespace DDD.Services.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<string?>> FindByIdAsync(int id)
+        public async Task<ActionResult<string?>> FindByIdAsync([FromRoute]int id)
         {
             return Ok(await _applicationServiceCustomer.FindByIdAsync(id));
         }
