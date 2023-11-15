@@ -14,7 +14,7 @@ namespace DDD.Services.Controllers
             _applicationServiceProduct = applicationServiceProduct;
         }
 
-        [HttpPost]
+        [HttpPost("InsertAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -36,7 +36,7 @@ namespace DDD.Services.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPut("UpdateAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -58,7 +58,7 @@ namespace DDD.Services.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete("DeleteAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -80,7 +80,7 @@ namespace DDD.Services.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("GetAllAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -89,7 +89,7 @@ namespace DDD.Services.Controllers
             return Ok(await _applicationServiceProduct.GetAllAsync());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("FindByIdASync/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

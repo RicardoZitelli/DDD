@@ -5,8 +5,7 @@ using DDD.Application.Dtos.Responses;
 
 namespace DDD.Services.Controllers
 {
-    [Route("api/v1/[Controller]")]
-    [Route("[Controller]")]
+    [Route("api/v1/[Controller]")]    
     [ApiController]
     public class CustomerController : Controller
     {
@@ -16,7 +15,7 @@ namespace DDD.Services.Controllers
             _applicationServiceCustomer = applicationServiceCliente;
         }
 
-        [HttpPost]
+        [HttpPost("InsertAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -38,7 +37,7 @@ namespace DDD.Services.Controllers
            
         }
 
-        [HttpPut]
+        [HttpPut("UpdateAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -60,7 +59,7 @@ namespace DDD.Services.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete("DeleteAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -82,7 +81,7 @@ namespace DDD.Services.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("FindByIdAsync/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -91,7 +90,7 @@ namespace DDD.Services.Controllers
             return Ok(await _applicationServiceCustomer.FindByIdAsync(id));
         }
 
-        [HttpGet]
+        [HttpGet("GetAllAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

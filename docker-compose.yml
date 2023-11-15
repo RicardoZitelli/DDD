@@ -26,6 +26,7 @@ services:
       dockerfile: DDD/Dockerfile
     ports:
       - 8080:80
+      - 56555:443    
     depends_on:
       - ddddb
     environment:
