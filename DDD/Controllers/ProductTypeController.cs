@@ -1,4 +1,5 @@
-﻿using DDD.Application.Interfaces;
+﻿using DDD.Application.Dtos.Requests;
+using DDD.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DDD.Services.Controllers
@@ -58,19 +59,28 @@ namespace DDD.Services.Controllers
 
         }
 
-        [HttpDelete("DeleteAsync")]
+        [HttpDelete("DeleteAsync/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> DeleteAsync([FromBody] Application.Dtos.Requests.ProductTypeDto productTypeDto)
+        public async Task<ActionResult> DeleteAsync([FromRoute] int productTypeId)
         {
             try
             {
+                var productTypeDto = await _applicationServiceProductType.FindByIdAsync(productTypeId);
+
                 if (productTypeDto == null)
                 {
                     return NotFound();
                 }
-                await _applicationServiceProductType.RemoveAsync(productTypeDto);
+
+                await _applicationServiceProductType.RemoveAsync(new ProductTypeDto
+                    {
+                        Id = productTypeDto.Id,
+                        Descricao = productTypeDto.Descricao,
+                        Ativo = productTypeDto.Ativo
+                    });
+
                 return Ok("Product type successfully removed");
             }
             catch (Exception ex)
@@ -90,7 +100,7 @@ namespace DDD.Services.Controllers
         }
 
         [HttpGet("FindByIdAsync/{id}")]
-        public async Task<ActionResult<string?>> FindByIdAsync(int id)
+        public async Task<ActionResult<string?>> FindByIdAsync([FromRoute] int id)
         {
             return Ok(await _applicationServiceProductType.FindByIdAsync(id));
         }
