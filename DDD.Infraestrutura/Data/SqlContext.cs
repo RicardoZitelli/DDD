@@ -1,7 +1,5 @@
 ﻿using DDD.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DDD.Infrastructure.Data
 {
