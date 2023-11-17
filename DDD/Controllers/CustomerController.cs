@@ -7,13 +7,9 @@ namespace DDD.Services.Controllers
 {
     [Route("api/v1/[Controller]")]    
     [ApiController]
-    public class CustomerController : Controller
+    public class CustomerController(IApplicationServiceCustomer applicationServiceCliente) : Controller
     {
-        private readonly IApplicationServiceCustomer _applicationServiceCustomer;
-        public CustomerController(IApplicationServiceCustomer applicationServiceCliente)
-        {
-            _applicationServiceCustomer = applicationServiceCliente;
-        }
+        private readonly IApplicationServiceCustomer _applicationServiceCustomer = applicationServiceCliente;
 
         [HttpPost("InsertAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

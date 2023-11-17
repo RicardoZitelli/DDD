@@ -3,11 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DDD.Infrastructure.Data.Repositories
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
+    public class RepositoryBase<TEntity>(SqlContext sqlContext) : IRepositoryBase<TEntity> where TEntity : class
     {
-        private readonly SqlContext sqlContext;
-        
-        public RepositoryBase(SqlContext sqlContext) => this.sqlContext = sqlContext;
+        private readonly SqlContext sqlContext = sqlContext;
 
         public async Task AddAsync(TEntity entity)
         {

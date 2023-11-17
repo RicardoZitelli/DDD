@@ -5,14 +5,9 @@ namespace DDD.Services.Controllers
 {
     [Route("api/v1/[Controller]")]
     [ApiController]
-    public class ProductController : Controller
+    public class ProductController(IApplicationServiceProduct applicationServiceProduct) : Controller
     {
-        private readonly IApplicationServiceProduct _applicationServiceProduct
-            ;
-        public ProductController(IApplicationServiceProduct applicationServiceProduct)
-        {
-            _applicationServiceProduct = applicationServiceProduct;
-        }
+        private readonly IApplicationServiceProduct _applicationServiceProduct = applicationServiceProduct;
 
         [HttpPost("InsertAsync")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
