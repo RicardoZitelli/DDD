@@ -6,16 +6,10 @@ using DDD.Application.Dtos.Responses;
 
 namespace DDD.Application
 {
-    public class ApplicationServiceCustomer : IApplicationServiceCustomer
+    public class ApplicationServiceCustomer(IServiceCustomer serviceCustomer, IMapper mapper) : IApplicationServiceCustomer
     {
-        private readonly IServiceCustomer _serviceCustomer;
-        private readonly IMapper _mapper;
-
-        public ApplicationServiceCustomer(IServiceCustomer serviceCustomer, IMapper mapper)
-        {
-            _serviceCustomer = serviceCustomer;            
-            _mapper = mapper;            
-        }
+        private readonly IServiceCustomer _serviceCustomer = serviceCustomer;
+        private readonly IMapper _mapper = mapper;
 
         public async Task AddAsync(Dtos.Requests.CustomerDto customerDto)
         {

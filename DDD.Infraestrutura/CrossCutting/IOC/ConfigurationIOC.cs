@@ -5,6 +5,7 @@ using DDD.Domain.Repositories.Interfaces;
 using DDD.Domain.Services;
 using DDD.Domain.Services.Interfaces;
 using DDD.Infrastructure.Data.Repositories;
+using DDD.Infrastructure.ExternalAPIs.Correios;
 
 namespace DDD.Infrastructure.CrossCutting.IOC
 {
@@ -20,14 +21,16 @@ namespace DDD.Infrastructure.CrossCutting.IOC
 
             ConfigureRepositories(builder);
 
+            ConfigurationExternalServices(builder);
+
             #endregion
         }
-
-        private static void ConfigureApplications(ContainerBuilder builder)
+                private static void ConfigureApplications(ContainerBuilder builder)
         {
             builder.RegisterType<ApplicationServiceCustomer>().As<IApplicationServiceCustomer>();
             builder.RegisterType<ApplicationServiceProduct>().As<IApplicationServiceProduct>();
             builder.RegisterType<ApplicationServiceProductType>().As<IApplicationServiceProductType>();
+            builder.RegisterType<ApplicationServiceCorreiosApi>().As<IApplicationServiceCorreiosApi>();
         }
 
         private static void ConfigureServices(ContainerBuilder builder)
@@ -35,6 +38,7 @@ namespace DDD.Infrastructure.CrossCutting.IOC
             builder.RegisterType<ServiceCustomer>().As<IServiceCustomer>();
             builder.RegisterType<ServiceProduct>().As<IServiceProduct>();
             builder.RegisterType<ServiceProductType>().As<IServiceProductType>();
+
         }
 
         private static void ConfigureRepositories(ContainerBuilder builder)
@@ -42,6 +46,11 @@ namespace DDD.Infrastructure.CrossCutting.IOC
             builder.RegisterType<RepositoryCustomer>().As<IRepositoryCustomer>();
             builder.RegisterType<RepositoryProduct>().As<IRepositoryProduct>();
             builder.RegisterType<RepositoryProductType>().As<IRepositoryProductType>();
+        }
+
+        private static void ConfigurationExternalServices(ContainerBuilder builder)
+        {
+            builder.RegisterType<CorreiosApi>().As<IServiceCorreiosApi>();
         }
     }
 }

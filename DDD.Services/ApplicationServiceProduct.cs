@@ -5,16 +5,10 @@ using DDD.Domain.Entities;
 
 namespace DDD.Application
 {
-    public class ApplicationServiceProduct : IApplicationServiceProduct
+    public class ApplicationServiceProduct(IServiceProduct serviceProduct, IMapper mapper) : IApplicationServiceProduct
     {
-        private readonly IServiceProduct _serviceProduct;
-        private readonly IMapper _mapper;
-
-        public ApplicationServiceProduct(IServiceProduct serviceProduct, IMapper mapper)
-        {
-            _serviceProduct = serviceProduct;
-            _mapper = mapper;
-        }
+        private readonly IServiceProduct _serviceProduct = serviceProduct;
+        private readonly IMapper _mapper = mapper;
 
         public async Task AddAsync(Dtos.Requests.ProductDto productDto)
         {

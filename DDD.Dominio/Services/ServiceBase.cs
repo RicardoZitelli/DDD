@@ -3,22 +3,18 @@ using DDD.Domain.Services.Interfaces;
 
 namespace DDD.Domain.Services
 {
-    public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : class
+    public class ServiceBase<TEntity>(IRepositoryBase<TEntity> repository) : IServiceBase<TEntity> where TEntity : class
     {
-        private readonly IRepositoryBase<TEntity> repository;
+        private readonly IRepositoryBase<TEntity> _repository = repository;
 
-        public ServiceBase(IRepositoryBase<TEntity> repository) { 
-            this.repository = repository;
-        }
-
-        public async Task AddAsync(TEntity obj) => await repository.AddAsync(obj);            
+        public async Task AddAsync(TEntity obj) => await _repository.AddAsync(obj);            
         
-        public async Task<TEntity?> FindByIdAsync(int id) => await repository.GetByIdAsync(id);        
+        public async Task<TEntity?> FindByIdAsync(int id) => await _repository.GetByIdAsync(id);        
         
-        public async Task<IEnumerable<TEntity>> GetAllAsync() => await repository.GetAllAsync();
+        public async Task<IEnumerable<TEntity>> GetAllAsync() => await _repository.GetAllAsync();
         
-        public async Task RemoveAsync(TEntity obj) => await repository.RemoveAsync(obj);
+        public async Task RemoveAsync(TEntity obj) => await _repository.RemoveAsync(obj);
         
-        public async Task UpdateAsync(TEntity obj) => await repository.UpdateAsync(obj);        
+        public async Task UpdateAsync(TEntity obj) => await _repository.UpdateAsync(obj);        
     }
 }

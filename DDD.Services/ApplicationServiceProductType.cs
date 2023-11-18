@@ -6,16 +6,10 @@ using DDD.Application.Dtos.Responses;
 
 namespace DDD.Application
 {
-    public class ApplicationServiceProductType : IApplicationServiceProductType
+    public class ApplicationServiceProductType(IServiceProductType serviceProductType, IMapper mapper) : IApplicationServiceProductType
     {
-        private readonly IServiceProductType _serviceProductType;
-        private readonly IMapper _mapper;
-
-        public ApplicationServiceProductType(IServiceProductType serviceProductType, IMapper mapper)
-        {
-            _serviceProductType = serviceProductType;
-            _mapper = mapper;
-        }
+        private readonly IServiceProductType _serviceProductType = serviceProductType;
+        private readonly IMapper _mapper = mapper;
 
         public async Task AddAsync(Dtos.Requests.ProductTypeDto productTypeDto)
         {
